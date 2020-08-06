@@ -1,0 +1,25 @@
+modules:
+  http_2xx:
+    prober: http
+  http_post_2xx:
+    prober: http
+    http:
+      method: POST
+
+  # module: expect http_2xx, with ip4
+  http_2xx_with_ip4:
+    prober: http
+    timeout: 5s
+    http:
+      preferred_ip_protocol: "ip4"
+
+  # module: expect http_2xx, with Stripe basic-auth
+  # @see https://stripe.com/docs/api/authentication?lang=curl
+  http_2xx_for_stripe_api:
+    prober: http
+    timeout: 5s
+    http:
+      preferred_ip_protocol: "ip4"
+      method: GET
+      basic_auth:
+        username: 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
